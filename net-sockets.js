@@ -12,7 +12,7 @@ angular.module('stepheneisenhauer.netsockets', []).
    * The factory you should use in your application code. Returns the
    * appropriate implementation for your platform.
    */
-  factory('NetSocket', function (NodeNetSocket, ChromeNetSocket, MozNetSocket) {
+  factory('NetSocket', ['NodeNetSocket', 'ChromeNetSocket', 'MozNetSocket', function (NodeNetSocket, ChromeNetSocket, MozNetSocket) {
     if (typeof require !== 'undefined' && require('net')) {
       return NodeNetSocket;
     }
@@ -25,7 +25,7 @@ angular.module('stepheneisenhauer.netsockets', []).
     else {
       // Raise some kind of error
     }
-  }).
+  }]).
   /**
    * The base class for all of the platform-specific NetSocket implementations.
    * Defines a constructor that is shared among all of the subclasses as-is.
@@ -63,7 +63,7 @@ angular.module('stepheneisenhauer.netsockets', []).
    * The Node.js (node-webkit) implementation using the "net" module.
    * Should not be used directly.
    */
-  factory('NodeNetSocket', function(BaseNetSocket) {
+  factory('NodeNetSocket', ['BaseNetSocket', function(BaseNetSocket) {
     var NodeNetSocket = function(options) {
       BaseNetSocket.call(this, options);
       this.net = require('net');
@@ -116,12 +116,12 @@ angular.module('stepheneisenhauer.netsockets', []).
       },
     });
     return NodeNetSocket;
-  }).
+  }]).
   /**
    * The Chrome packaged app implementation using chrome.sockets.
    * Should not be used directly.
    */
-  factory('ChromeNetSocket', function(BaseNetSocket) {
+  factory('ChromeNetSocket', ['BaseNetSocket', function(BaseNetSocket) {
     var ChromeNetSocket = function(options) {
       BaseNetSocket.call(this, options);
       this.socketId;
@@ -222,12 +222,12 @@ angular.module('stepheneisenhauer.netsockets', []).
       },
     });
     return ChromeNetSocket;
-  }).
+  }]).
   /**
    * The Firefox packaged app implementation using mozTCPSocket.
    * Should not be used directly.
    */
-  factory('MozNetSocket', function(BaseNetSocket) {
+  factory('MozNetSocket', ['BaseNetSocket', function(BaseNetSocket) {
     var MozNetSocket = function(options) {
       BaseNetSocket.call(this, options);
       this.socket;
@@ -283,4 +283,4 @@ angular.module('stepheneisenhauer.netsockets', []).
       },
     });
     return MozNetSocket;
-  });
+  }]);
