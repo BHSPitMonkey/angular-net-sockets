@@ -5,7 +5,9 @@ for using TCP/UDP sockets.
 
 ## Setup
 
-1. Place net-sockets.js somewhere in your app (e.g. "lib/angular-net-sockets/").
+1. Do **one** of the following:
+    * Place net-sockets.js somewhere in your app (e.g. "lib/angular-net-sockets/").
+    * Install using bower (`bower install angular-net-sockets`).
 2. Include the net-socket.js file in your HTML using a `<script>` tag (or
    however you are currently getting your scripts loaded into the page).
 3. Add `stepheneisenhauer.netsockets` to the list of dependencies in your app
