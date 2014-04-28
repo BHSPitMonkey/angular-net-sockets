@@ -1,0 +1,16 @@
+{
+  "name": "angular-net-sockets",
+  "description": "Angular.JS module that provides a cross-vendor-compatible interface for using TCP/UDP sockets.",
+  "version": "0.1.1",
+  "main": "net-sockets.js",
+  "ignore": [],
+  "keywords": ["angular", "tcp", "socket", "chrome"],
+  "authors": ["Stephen Eisenhauer <bhs2007@gmail.com> (http://stepheneisenhauer.com)"],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/BHSPitMonkey/angular-net-sockets.git"
+  },
+  "dependencies": {
+    "angular": ">= 1.0.0"
+  }
+}
